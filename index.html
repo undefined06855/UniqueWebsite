@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap" rel="stylesheet" />
+
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/dark.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+        <link href="style.css" rel="stylesheet" />
+
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        
+
+        <title>UniqueWebsite</title>
+    </head>
+    <body>
+        <main>
+            <span class="large">This website should be unique for everyone.</span>
+            <span id="uniqueval">Your unique value: loading...</span>
+            <span class="notice" onclick="window.scrollTo(0, document.body.scrollHeight)">
+                Scroll to see how it works
+                <br/>
+                <span class="chevron bottom"></span>
+            </span>
+        </main>
+
+        <footer>
+            <span class="large pad-y">Well, how does this work?</span>
+            <p>
+                Magic. Or just using your IP address.
+                <br/><br/>
+                This website uses ipify.org to get your IP address (which is obviously going to be unique), then converts it to a number, and plugs it into a hsl calculation to get a unique background colour for you!
+                <br/>
+                The number used is the same as the one you see above.
+                <br/>
+                <br/>
+                The main code to generate that number was created by chatGPT, and you can see it below:
+            </p>
+            <div class="codeBox">
+                <pre>
+                    <code class="language-javascript">
+function uniqueValue(arr)
+{
+    let unique = 0
+    for (let i = 0; i < arr.length; i++) {
+        unique += arr[i] * Math.pow(256, i)
+    }
+    return unique
+}
+
+function uniqueValue2(arr)
+{
+    const unique = uniqueValue(arr);
+    const mapped = unique / (Math.pow(256, 4) - 1);
+    return mapped;
+}
+                    </code>
+                </pre>
+            </div>
+            <p>
+                uniqueValue takes in a list of four (or more) values, which are the four digits of your IP address. uniqueValue2 just maps it to a 0 - 1 range, so you can use it with css's turn to get an angle value for hsl, and create the background colour!<br/><br/>There's a bit more code, like storing the IP in localStorage so you don't have to ping ipify every time, but that's not important. If you really want to know, just look yourself.<br/><br/><small>Since you're here, why don't you check out my <a href="https://github.com/undefined06855">Github</a>?</small>
+            </p>
+        </footer>
+
+        <script src="main.js"></script>
+    </body>
+</html>
